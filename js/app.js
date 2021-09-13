@@ -18,10 +18,12 @@ const showProducts = (products) => {
       </div>
       <h3>${product.title}</h3>
       <p>Category: ${product.category}</p>
+      <p><span class="fw-bold">Rating:</span> ${product.rating.rate}  <span class="fw-bold">Sold:</span> ${product.rating.count} times</p>
       <h2>Price: $ ${product.price}</h2>
-      <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
-      <button id="details-btn" class="btn btn-danger">Details</button></div>
-      `;
+      <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-warning">Add to Cart</button>
+      <button id="details-btn" class="btn btn-secondary">Details</button></div>
+      `
+
     document.getElementById("all-products").appendChild(div);
   }
 };
@@ -36,21 +38,20 @@ const addToCart = (id, price) => {
 
 const getInputValue = (id) => {
   const element = document.getElementById(id).innerText;
-  const converted = parseInt(element);
+  const converted = parseFloat(element);
   return converted;
 };
 
-// main price update function Math.round(total)
+// main price update function => Modified on  Math.round(total)
 const updatePrice = (id, value) => {
   const convertedOldPrice = getInputValue(id);
   const convertPrice = parseFloat(value);
   const total = convertedOldPrice + convertPrice;
-  console.log(total);
   document.getElementById(id).innerText = total.toFixed(2);
   updateTotal();
 };
 
-// set innerText function Math.round(value)
+// set innerText function => Modified on Math.round(value)
 const setInnerText = (id, value) => {
   document.getElementById(id).innerText = value.toFixed(2);
 };
