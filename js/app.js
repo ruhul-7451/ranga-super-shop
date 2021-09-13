@@ -19,7 +19,7 @@ const showProducts = (products) => {
       <h3>${product.title}</h3>
       <p>Category: ${product.category}</p>
       <p><span class="fw-bold">Rating:</span> ${product.rating.rate}  <span class="fw-bold">Sold:</span> ${product.rating.count} times</p>
-      <h2>Price: $ ${product.price}</h2>
+      <h4>Price: $ ${product.price}</h4>
       <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-warning">Add to Cart</button>
       <button id="details-btn" class="btn btn-secondary">Details</button></div>
       `
@@ -42,16 +42,15 @@ const getInputValue = (id) => {
   return converted;
 };
 
-// main price update function => Modified on  Math.round(total)
+// main price update function
 const updatePrice = (id, value) => {
   const convertedOldPrice = getInputValue(id);
   const convertPrice = parseFloat(value);
   const total = convertedOldPrice + convertPrice;
   document.getElementById(id).innerText = total.toFixed(2);
-  updateTotal();
 };
 
-// set innerText function => Modified on Math.round(value)
+// set innerText function
 const setInnerText = (id, value) => {
   document.getElementById(id).innerText = value.toFixed(2);
 };
@@ -63,14 +62,15 @@ const updateTaxAndCharge = () => {
     setInnerText("delivery-charge", 30);
     setInnerText("total-tax", priceConverted * 0.2);
   }
-  if (priceConverted > 400) {
+  else if (priceConverted > 400) {
     setInnerText("delivery-charge", 50);
     setInnerText("total-tax", priceConverted * 0.3);
   }
-  if (priceConverted > 500) {
+  else if (priceConverted > 500) {
     setInnerText("delivery-charge", 60);
     setInnerText("total-tax", priceConverted * 0.4);
   }
+  updateTotal();
 };
 
 //grandTotal update function
@@ -78,6 +78,6 @@ const updateTotal = () => {
   const grandTotal =
     getInputValue("price") + getInputValue("delivery-charge") +
     getInputValue("total-tax");
-  document.getElementById("total").innerText = grandTotal.toFixed(2);
+  document.getElementById("total").innerText = parseFloat(grandTotal).toFixed(2);
 };
 loadProducts();
