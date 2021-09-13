@@ -12,9 +12,10 @@
   transition: 0.6s;
 }
 .single-product:hover {
+  background-color: aliceblue;
   box-shadow: 4px 4px 7px gray;
   border-radius: 10px;
-  border: 1px solid cyan;
+  border: 1px solid rgb(0, 0, 0);
 }
 .product-image {
   width: 150px;

@@ -18,18 +18,23 @@
 
 <body class="container">
   <header></header>
-  <main class="main">
+  <main>
+    <!-- Search Box Starts -->
     <div class="input-group mb-3 p-5 w-50 mx-auto">
       <input type="text" class="form-control" placeholder="Search Products" aria-label="Search Products"
         aria-describedby="search-btn">
       <button class="btn btn-outline-secondary" type="button" id="search-btn">Search</button>
     </div>
-    </div>
+    <!-- Search Box Ends -->
+    <!-- Display Products Starts -->
     <div class="row">
       <div class="col-md-9 col-lg-9 col-sm-7">
         <div id="all-products" class="">
         </div>
       </div>
+      <!-- Display Products Ends -->
+
+      <!-- Display My-Cart Starts -->
       <div class="col-md-3 col-lg-3 col-sm-5 cart-main">
         <div class="cart bg-light" id="my-cart">
           <table class="table">
@@ -79,6 +84,7 @@
           </div>
         </div>
       </div>
+      <!-- Display My-Cart Ends -->
     </div>
   </main>
   <footer></footer>
